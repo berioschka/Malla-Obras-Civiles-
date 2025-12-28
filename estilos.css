@@ -1,1 +1,149 @@
+:root {
+    /* Definición de Colores Pastel */
+    --color-aprobado: #f4c2c2; /* Rosado Pastel */
+    --color-disponible: #aec6cf; /* Azul Pastel */
+    --color-bloqueado: #e0e0e0; /* Gris */
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --border-color: #ccc;
+}
 
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn-reset {
+    background-color: #ff6961;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.btn-reset:hover {
+    background-color: #d9534f;
+}
+
+/* Contenedor principal: Scroll horizontal para ver los 11 semestres */
+.malla-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    align-items: flex-start;
+}
+
+/* Columna de cada Semestre */
+.semestre-columna {
+    min-width: 200px;
+    max-width: 220px;
+    flex-shrink: 0;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.semestre-titulo {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+/* Estilos de las Tarjetas (Ramos) */
+.ramo-card {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    text-align: center;
+    user-select: none;
+    position: relative;
+}
+
+.ramo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* --- Estados de los Ramos --- */
+
+/* 1. Disponible (Azul Pastel) */
+.ramo-card.disponible {
+    background-color: var(--color-disponible);
+    color: #000;
+}
+
+/* 2. Aprobado (Rosado Pastel + Tachado) */
+.ramo-card.aprobado {
+    background-color: var(--color-aprobado);
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+/* 3. Bloqueado (Gris + Cursor prohibido) */
+.ramo-card.bloqueado {
+    background-color: var(--color-bloqueado);
+    color: #777;
+    cursor: not-allowed;
+    border-color: #ccc;
+}
+.ramo-card.bloqueado:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- Estilos del Modal (Alerta) --- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.5); 
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: black;
+}
